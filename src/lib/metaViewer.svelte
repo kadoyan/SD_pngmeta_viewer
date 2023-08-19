@@ -139,9 +139,9 @@
 			name="show_img"
 			id="show_img"
 			bind:checked={showImage}
-		/>画像を表示</label
+		/>Show Images</label
 	>
-	<button on:click={resetResults}>RESET</button>
+	<button on:click={resetResults} class="reset">RESET</button>
 </div>
 
 {#if results.length > 0}
