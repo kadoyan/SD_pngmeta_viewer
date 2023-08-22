@@ -2,6 +2,7 @@
 	let files;
 	let results = [];
 	let showImage = false; //Image flag
+	let sortByName = false; //Sort flag by name
 
 	function handleFilesChange() {
 		if (files) {
@@ -116,6 +117,10 @@
 		results = [];
 		files = null;
 	}
+
+	$: sortedResults = sortByName
+		? [...results].sort((a, b) => a.name.localeCompare(b.name))
+		: [...results];
 </script>
 
 <div class="file_dropper">
@@ -141,12 +146,20 @@
 			bind:checked={showImage}
 		/>Show Images</label
 	>
+	<label for="sort_name"
+		><input
+			type="checkbox"
+			name="sort_name"
+			id="sort_name"
+			bind:checked={sortByName}
+		/>Sort by name</label
+	>
 	<button on:click={resetResults} class="reset">RESET</button>
 </div>
 
 {#if results.length > 0}
 	<div class="results">
-		{#each results as item, index}
+		{#each sortedResults as item, index}
 			<div class="item info">
 				<figure>
 					{#if showImage}

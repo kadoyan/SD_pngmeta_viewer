@@ -30,6 +30,9 @@ main {
 	text-align: right;
 	margin-top: 1em;
 	color: #ddd;
+	label {
+		margin-left: 1em;
+	}
 	button {
 		display: inline-block;
 		margin-left: 2em;
